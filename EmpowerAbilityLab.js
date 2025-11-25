@@ -16,6 +16,9 @@ const views = [
   }
 ];
 
+const resourcePrefix = window.location.hostname === 'aliceyangac.github.io'
+  ? '/CST8914_Group3_Final_Project_SPA'
+  : '';
 
 document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.getElementsByClassName('nav-link');
@@ -39,7 +42,7 @@ function renderView() {
 
   // render view based on path
   for (const view of views) {
-    if (view.route === path) {
+    if (view.route === resourcePrefix + path) {
       // display the view
       document.getElementById(view.id).style.display = 'block';
 
@@ -47,7 +50,7 @@ function renderView() {
       document.title = `${view.title} – Empower Ability Labs`;
 
       // set the nav link as active
-      document.querySelector(`.nav-link[href="${view.route}"]`)
+      document.querySelector(`.nav-link[href=".${view.route}"]`)
         .parentElement.classList.add('active');
 
       // focus the header
@@ -57,7 +60,7 @@ function renderView() {
       document.getElementById(view.id).style.display = 'none';
 
       // set the nav link as inactive
-      document.querySelector(`.nav-link[href="${view.route}"]`)
+      document.querySelector(`.nav-link[href=".${view.route}"]`)
         .parentElement.classList.remove('active');
     }
   }
