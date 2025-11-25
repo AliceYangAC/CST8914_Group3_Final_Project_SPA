@@ -1,0 +1,19 @@
+body {
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+main>div {
+  display: none;
+}
+
+.navbar-brand {
+  height: 4rem;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #606060;
+}
