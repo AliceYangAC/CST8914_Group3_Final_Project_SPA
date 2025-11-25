@@ -42,7 +42,7 @@ function renderView() {
 
   // render view based on path
   for (const view of views) {
-    if (view.route === resourcePrefix + path) {
+    if (resourcePrefix + view.route === path) {
       // display the view
       document.getElementById(view.id).style.display = 'block';
 
