@@ -45,9 +45,12 @@ window.addEventListener('popstate', renderView);
 
 // checks the path to update the title and render the correct view
 function renderView() {
+  // get the path from the URL
+  const route = getRoute();
+
   // render view based on route
   for (const view of views) {
-    if (view.route === getRoute()) {
+    if (view.route === route) {
       // display the view
       document.getElementById(view.id).style.display = 'block';
 
