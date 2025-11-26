@@ -1,3 +1,4 @@
+// array of views for the SPA
 const views = [
   {
     route: '/',
@@ -16,20 +17,26 @@ const views = [
   }
 ];
 
-const resourcePrefix = window.location.hostname === 'aliceyangac.github.io'
-  ? '/CST8914_Group3_Final_Project_SPA'
-  : '';
-
+// JS that runs when page loads
 document.addEventListener('DOMContentLoaded', () => {
+  // restore path if page was refreshed
+  const fallbackPath = sessionStorage.getItem("spa-fallback-path");
+  if (fallbackPath) {
+    sessionStorage.removeItem("spa-fallback-path");
+    history.replaceState(null, "", fallbackPath);
+  }
+
+  // loop through nav links adding the click event handler
   const navLinks = document.getElementsByClassName('nav-link');
   for (const link of navLinks) {
     link.addEventListener('click', e => {
-      e.preventDefault();
-      history.pushState(null, '', link.href);
+      e.preventDefault(); // prevent the links from refreshing the page
+      history.pushState(null, '', link.href); // update the history for the back button
       renderView();
     });
   }
 
+  // once page has finished loading everything, render the view
   renderView();
 });
 
@@ -38,11 +45,9 @@ window.addEventListener('popstate', renderView);
 
 // checks the path to update the title and render the correct view
 function renderView() {
-  const path = window.location.pathname;
-
-  // render view based on path
+  // render view based on route
   for (const view of views) {
-    if (resourcePrefix + view.route === path) {
+    if (view.route === getRoute()) {
       // display the view
       document.getElementById(view.id).style.display = 'block';
 
@@ -50,6 +55,7 @@ function renderView() {
       document.title = `${view.title} – Empower Ability Labs`;
 
       // set the nav link as active
+
       document.querySelector(`.nav-link[href=".${view.route}"]`)
         .parentElement.classList.add('active');
 
@@ -64,5 +70,23 @@ function renderView() {
         .parentElement.classList.remove('active');
     }
   }
+}
+
+
+// gets the route from the current url
+function getRoute() {
+  const path = window.location.pathname;
+
+  // extract the SPA root by removing everything after the last /
+  const root = path.replace(/index\.html$/, "").split("/").slice(0, -1).join("/") + "/";
+
+  // get the relative path
+  let relative = path.substring(root.length);
+
+  // handle home edge case
+  if (relative === "") return "/";
+
+  // prepend slash to become a route
+  return "/" + relative;
 }
 
