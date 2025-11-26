@@ -20,10 +20,10 @@ const views = [
 // JS that runs when page loads
 document.addEventListener('DOMContentLoaded', () => {
   // restore path if page was refreshed
-  const fallbackPath = sessionStorage.getItem("spa-fallback-path");
+  const fallbackPath = sessionStorage.getItem('spa-fallback-path');
   if (fallbackPath) {
-    sessionStorage.removeItem("spa-fallback-path");
-    history.replaceState(null, "", fallbackPath);
+    sessionStorage.removeItem('spa-fallback-path');
+    history.replaceState(null, '', fallbackPath);
   }
 
   // loop through nav links adding the click event handler
@@ -78,15 +78,15 @@ function getRoute() {
   const path = window.location.pathname;
 
   // extract the SPA root by removing everything after the last /
-  const root = path.replace(/index\.html$/, "").split("/").slice(0, -1).join("/") + "/";
+  const root = path.replace(/index\.html$/, '').split('/').slice(0, -1).join('/') + '/';
 
   // get the relative path
   let relative = path.substring(root.length);
 
   // handle home edge case
-  if (relative === "") return "/";
+  if (relative === 'index.html' || relative === '') return '/';
 
   // prepend slash to become a route
-  return "/" + relative;
+  return '/' + relative;
 }
 
