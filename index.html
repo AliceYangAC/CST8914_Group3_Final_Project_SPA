@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -74,7 +74,10 @@
           do they employ?
         </p>
         <!-- Start: 2. Lightbox/modal button -->
-        <button onclick="openDialog('dialog_committee', this)">
+        <button
+          class="btn btn-primary"
+          onclick="openDialog('dialog_committee', this)"
+        >
           Meet the Empower Community!
         </button>
         <div id="dialog_layer" class="dialogs">
@@ -102,7 +105,12 @@
               <li>Google.ca</li>
               <li>Government of Canada</li>
             </ul>
-            <button onclick="closeDialog('dialog_committee')">Close</button>
+            <button
+              class="btn btn-primary"
+              onclick="closeDialog('dialog_committee')"
+            >
+              Close
+            </button>
           </div>
         </div>
         <!-- End: 2. Lightbox/modal button -->
