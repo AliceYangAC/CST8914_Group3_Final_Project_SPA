@@ -93,3 +93,38 @@ function getRoute() {
   return '/' + relative;
 }
 
+// -------------------------------
+// 2. Lightbox/Dialog JS
+// -------------------------------
+
+let previousActiveElement = null;
+
+function openDialog(dialogId, trigger) {
+  // save the element that triggered the dialog to return focus later
+  previousActiveElement = trigger;
+
+  // get the dialog and remove the hidden class
+  const dialog = document.getElementById(dialogId);
+  dialog.classList.remove('hidden');
+
+  // focus the 'Close' button
+  const closeBtn = dialog.querySelector('button');
+  closeBtn.focus();
+
+  // disable the Tab key so focus stays on the button.
+  dialog.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDialog(closeBtn);
+    
+    // prevent tab (keep focus on the one button)
+    if (e.key === 'Tab') e.preventDefault(); 
+  });
+}
+
+function closeDialog(dialogId) {
+  document.getElementById(dialogId).classList.add('hidden');
+
+  // restore focus to main page prev element
+  if (previousActiveElement) {
+    previousActiveElement.focus();
+  }
+}

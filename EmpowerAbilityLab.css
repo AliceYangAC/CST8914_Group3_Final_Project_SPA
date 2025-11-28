@@ -17,3 +17,45 @@ main>div {
 .navbar-light .navbar-nav .nav-link {
   color: #606060;
 }
+
+button:focus {
+  outline: blue solid 2px;
+}
+
+/* ------------------------------- */
+/* 2. Lightbox/Dialog CSS */
+/* dialog positioning */
+#dialog_layer, #dialog_committee::before {
+  position: fixed; 
+  inset: 0;
+}
+
+/* dialog structure */
+#dialog_layer {
+  display: grid; 
+  place-items: center; 
+  pointer-events: none; 
+  z-index: 1000;
+}
+
+/* dialog box appearance */
+#dialog_committee {
+  background: #fff; 
+  border: 1px solid #000; 
+  padding: 1rem;
+  width: min(90%, 500px);
+  pointer-events: auto; 
+  position: relative;
+}
+
+/* backdrop dimming */
+#dialog_committee::before {
+  content: ""; 
+  background: #0008; 
+  z-index: -1;
+}
+
+.hidden { 
+  display: none; 
+}
+/* ------------------------------- */
