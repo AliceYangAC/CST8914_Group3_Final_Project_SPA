@@ -113,7 +113,7 @@ function openDialog(dialogId, trigger) {
 
   // disable the Tab key so focus stays on the button.
   dialog.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeDialog(closeBtn);
+    if (e.key === 'Escape') closeDialog(dialogId);
     
     // prevent tab (keep focus on the one button)
     if (e.key === 'Tab') e.preventDefault(); 
