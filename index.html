@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -62,7 +62,7 @@
     </nav>
     <main class="container">
       <!-- Start: 2. Home content architecture -->
-      <section id="home">
+      <div id="home">
         <h1 tabindex="-1">Welcome to Empower Ability Labs!</h1>
         <p>
           Empower Ability Labs is a hub for learning and empathy-building. We
@@ -116,50 +116,55 @@
         <!-- End: 2. Lightbox/modal button -->
         <br /><br />
         <!-- Start: 2. Articles -->
-        <section aria-label="home articles">
-          <div class="row">
-            <article class="col-md-4">
-              <h2>Our Approach</h2>
-              <p>
-                Empower Ability Labs utilizes a hands-on approach to raise
-                awareness and promote empathy. Our immersive workshops and lab
-                days provide participants with a unique opportunity to step into
-                the shoes of individuals with disabilities and navigate the
-                world from their perspective.
-              </p>
-              <a
-                href="https://www.google.com/search/howsearchworks/our-approach/"
-                >Learn more</a
-              >
-            </article>
-            <article class="col-md-4">
-              <h2>Services</h2>
-              <p>
-                Promote accessibility awareness and enhance the user experience.
-              </p>
-              <ul>
-                <li>Empathy lab days and workshops</li>
-                <li>Go beyond WCAG compliance!</li>
-                <li>Inspirational speakers.</li>
-              </ul>
-              <a href="https://www.elevenways.be/en/services">Learn more</a>
-            </article>
-            <article class="col-md-4">
-              <h2>Testimonials</h2>
-              <p>
-                Invite a speaker with disabilities to share their unique
-                journey. This captivating addition to your upcoming event will
-                offer insights that resonate, inspire, educate, and enrich your
-                team’s understanding of inclusion.
-              </p>
-              <a
-                href="https://dictionary.cambridge.org/us/dictionary/english/testimonial"
-                >Learn more</a
-              >
-            </article>
-          </div>
-        </section>
-      </section>
+        <div class="row">
+          <article aria-labelledby="our-approach" class="col-md-4">
+            <h2 id="our-approach">Our Approach</h2>
+            <p>
+              Empower Ability Labs utilizes a hands-on approach to raise
+              awareness and promote empathy. Our immersive workshops and lab
+              days provide participants with a unique opportunity to step into
+              the shoes of individuals with disabilities and navigate the world
+              from their perspective.
+            </p>
+            <a
+              aria-labelledby="our-approach"
+              href="https://www.google.com/search/howsearchworks/our-approach/"
+              >Learn more</a
+            >
+          </article>
+          <article aria-labelledby="services" class="col-md-4">
+            <h2 id="services">Services</h2>
+            <p>
+              Promote accessibility awareness and enhance the user experience.
+            </p>
+            <ul>
+              <li>Empathy lab days and workshops</li>
+              <li>Go beyond WCAG compliance!</li>
+              <li>Inspirational speakers.</li>
+            </ul>
+            <a
+              aria-labelledby="services"
+              href="https://www.elevenways.be/en/services"
+              >Learn more</a
+            >
+          </article>
+          <article aria-labelledby="testimonials" class="col-md-4">
+            <h2 id="testimonials">Testimonials</h2>
+            <p>
+              Invite a speaker with disabilities to share their unique journey.
+              This captivating addition to your upcoming event will offer
+              insights that resonate, inspire, educate, and enrich your team’s
+              understanding of inclusion.
+            </p>
+            <a
+              aria-labelledby="testimonials"
+              href="https://dictionary.cambridge.org/us/dictionary/english/testimonial"
+              >Learn more</a
+            >
+          </article>
+          <!-- End: 2. Articles -->
+        </div>
+      </div>
       <!-- End: 2. Home content architecture -->
       <div id="services">
         <h1 tabindex="-1">Services</h1>
