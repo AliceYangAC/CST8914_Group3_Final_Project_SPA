@@ -179,21 +179,46 @@
         </p>
       </div>
 
-      <div id="schedule">
+      <section id="schedule">
         <h1 tabindex="-1">Schedule a Call</h1>
+        <img class="decorative_image" src="images/scheduleacall.png" alt="">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-          volutpat vulputate sapien a ultrices. Duis sit amet nibh porta,
-          molestie dolor nec, egestas nibh. Donec eleifend est at dolor
-          pharetra, at fringilla libero pretium. Sed non quam ut ligula egestas
-          efficitur. Vivamus congue massa non tempor scelerisque. Duis sit amet
-          elit iaculis, maximus sapien in, dictum sapien. Mauris id pellentesque
-          nisl. Mauris ullamcorper purus vel aliquam dapibus. Ut a placerat sem.
-          Sed varius, sapien non bibendum molestie, nunc arcu sagittis nisl, sed
-          tempus ex tortor nec erat. Donec hendrerit suscipit ipsum ac
-          porttitor. Nam lacus nisl, maximus a lectus at, ornare tempus eros.
+          At Empower Ability Labs, we are dedicated to cultivating empathy and driving positive change through immersive experiences.  Fill out the form below and we'll get back to you as soon as we can to schedule a call with our sales team! 
         </p>
-      </div>
+        
+       
+        
+        <form id="schdule_call_form">
+          <div id="user_entries">
+            <label for="business_entry">Business Name:</label>
+            <input id="business_entry" type="text" name="business"/><br>
+            <label for="phone_num_entry">Phone number:</label>
+            <input id="phone_num_entry" type="tel" pattern="\d{10}" name="phone"/><br>
+            <label for="email_entry">Email:</label><span aria-hidden="true">(required)</span>
+            <input id="email_entry" type="email" name="email" aria-required="true" required/><br>
+          </div>
+
+          <fieldset>
+            <legend>What would you like to talk about?</legend>
+            <div>
+              <input type="checkbox" id="opt1" name="opt1"/>
+              <label for="opt1">Awareness lab days and workshops</label>
+            </div>
+            <div>
+              <input type="checkbox" id="opt2" name="opt2"/>
+              <label for="opt2">Invite a speaker with disabilities to your event</label>
+            </div>
+            <div>
+              <input type="checkbox" id="opt3" name="opt3"/>
+              <label for="opt3">Usability testing</label>
+            </div>
+          </fieldset>
+
+          <label for="tell_us_entry">Tell us about your event!</label><br>
+          <textarea id="tell_us_entry" name="tell_us"></textarea><br>
+          <button class="btn btn-primary" id="submit_schedule_call" onclick="">Submit</button>
+        </form>
+      </section>
     </main>
 
     <footer class="container">
