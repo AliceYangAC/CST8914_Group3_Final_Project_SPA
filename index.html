@@ -158,18 +158,43 @@
               >
             
             <div>
+          </div>
+        </section>
             <h2>Schedule a call</h2>
+              <fieldset>
+              <legend>What would you like to talk about: </legend>
+              <form>
+              <p>Select the activities you are interested in:</p>
+              <label>
+                <label for="awareness_lab"></label>
+                <input type="checkbox" name="activities" id="awareness_lab">
+                Awareness lab days and workshops
+              </label>
+
+              <label>
+                <label for="invite_speaker"></label>
+                <input type="checkbox" name="activities" id="invite_speaker">
+                Invite a speaker with disabilities to your event
+              </label>
+
+              <label>
+                <label for="usability_testing"></label>
+                <input type="checkbox" name="activities" id="usability_testing">
+                Usability testing
+              </label>
+                  
+              </form>
+              </fieldset>
+              <div id=hiddenField hidden><label for="Tell us about your event"></label>Tell us about your event<br><textarea name="Tell us about your event" id="Tell us about your event"></textarea></div>
             <label>
                 <input id="id-switch-1" type="checkbox" role="switch">
                 <span class="state">
-                  <img class="on" src="./images/SwitchYes.png" aria-hidden="true">
-                  <img class="off" src="./images/SwitchNo.png" aria-hidden="true">
+                  <img class="on" src="./images/SwitchNo.png" aria-hidden="true">
+                  <img class="off" src="./images/SwitchYes.png" aria-hidden="true">
                 </span> Receive emails about updates and services.
             </label> 
-            
+            <button id="Schedule_A_Call_Button">Schedule a call</button>
             </div>
-          </div>
-        </section>
       </section>
       <!-- End: 2. Home content architecture -->
       <div id="services">

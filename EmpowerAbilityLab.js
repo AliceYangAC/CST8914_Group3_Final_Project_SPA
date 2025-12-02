@@ -163,3 +163,20 @@ window.addEventListener('load', function () {
     document.querySelectorAll('input[type=checkbox][role^=switch]')
   ).forEach((element) => new CheckboxSwitch(element));
 });
+
+//functionality for hidden textbox
+const usability_testing_checkbox = document.getElementById("usability_testing");
+const hidden_field_paragraph = document.getElementById("hiddenField");
+usability_testing_checkbox.addEventListener("change", () => {
+  if (usability_testing_checkbox.checked) {
+    hidden_field_paragraph.hidden = false;
+  }
+  else{
+    hidden_field_paragraph.hidden = true;
+  }
+});
+//functionality for button
+const schedule_button = document.getElementById("Schedule_A_Call_Button");
+schedule_button.addEventListener("click", () => {
+  alert("Thank you, we will call you within 3 business days");
+});

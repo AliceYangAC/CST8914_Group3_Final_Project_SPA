@@ -62,10 +62,13 @@ button:focus {
 /*CSS for switch with minor modifications to suit size of image and outline*/
 fieldset {
   width: 22em;
+  
 }
-
-legend {
+/*repurposed for border around checkboxes*/
+fieldset {
   font-size: 110%;
+  display: inline-block;
+  border: 1px solid black; padding: 10px;
 }
 
 label {
@@ -142,7 +145,7 @@ label:hover span.container {
 }
 
 label .state img {
-  height: 1em;  
+  height: 1.6em;  
   width: auto;
   vertical-align: middle;
 }
