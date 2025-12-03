@@ -80,37 +80,44 @@
         >
           Meet the Empower Community!
         </button>
+
         <div id="dialog_layer" class="dialogs">
           <div
             role="dialog"
             id="dialog_committee"
             aria-labelledby="dialog_committee_label"
+            aria-describedby="dialog_committee_desc"
             aria-modal="true"
             class="hidden"
           >
             <h2 id="dialog_committee_label" class="dialog_label">
               Community Steering Committee
             </h2>
-            <p id="dialog_paragraph">
-              We get an aha! moments from product managers who try our services
-              for the first time. We offered many lab days, workshops and
-              offered usability testing services to many companies and
-              organizations including:
-            </p>
-            <ul id="dialog_list">
-              <li>McGill University</li>
-              <li>Walmart.ca</li>
-              <li>Apple.ca</li>
-              <li>eBay</li>
-              <li>Google.ca</li>
-              <li>Government of Canada</li>
-            </ul>
-            <button
-              class="btn btn-primary"
-              onclick="closeDialog('dialog_committee')"
-            >
-              Close
-            </button>
+            <div id="dialog_committee_desc">
+              <p>
+                We get an aha! moments from product managers who try our
+                services for the first time. We offered many lab days, workshops
+                and offered usability testing services to many companies and
+                organizations including:
+              </p>
+              <ul>
+                <li>McGill University</li>
+                <li>Walmart.ca</li>
+                <li>Apple.ca</li>
+                <li>eBay</li>
+                <li>Google.ca</li>
+                <li>Government of Canada</li>
+              </ul>
+            </div>
+            <div class="dialog_form_actions">
+              <button
+                id="dialog_committee_close_btn"
+                class="btn btn-primary"
+                onclick="closeDialog(this)"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
         <!-- End: 2. Lightbox/modal button -->

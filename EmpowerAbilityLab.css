@@ -24,6 +24,8 @@ button:focus {
 
 /* ------------------------------- */
 /* 2. Lightbox/Dialog CSS */
+/* ------------------------------- */
+
 /* dialog positioning */
 #dialog_layer, #dialog_committee::before {
   position: fixed; 
