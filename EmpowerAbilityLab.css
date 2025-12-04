@@ -92,9 +92,11 @@ label input[role="switch"] {
   opacity: 0;
 }
 
+/* added border-radius to match the focus styling */
 label input[role="switch"] ~ .state {
   display: inline-block;
   user-select: none;
+  border-radius: 15px;
 }
 
 label input[role="switch"] ~ .state > .container {
@@ -133,11 +135,17 @@ label input[role="switch"]:checked ~ .state > .container > .position {
   opacity: 1;
 }
 
+/* focus styling for the switch */
+label input[role="switch"]:focus + .state {
+  outline: 2px solid blue;
+  background-color: #def;
+  border-radius: 15px;
+}
+
+/* this was what was causing the entire text focus; removed the border & bg color */
 label.focus,
 label:hover {
-  border-width: 2px;
   outline: none;
-  background-color: #def;
   cursor: pointer;
 }
 
