@@ -170,3 +170,82 @@ function closeDialog(element) {
     previousActiveElement.focus();
   }
 }
+
+//Functionality for the switch, taken from https://www.w3.org/WAI/ARIA/apg/patterns/switch/examples/switch-checkbox/
+/*
+ *   This content is licensed according to the W3C Software License at
+ *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ *
+ *   File:  switch-checkbox.js
+ *
+ *   Desc:  Switch widget using input[type=checkbox] that implements ARIA Authoring Practices
+ */
+'use strict';
+
+class CheckboxSwitch {
+  constructor(domNode) {
+    this.switchNode = domNode;
+    this.switchNode.addEventListener('focus', () => this.onFocus(event));
+    this.switchNode.addEventListener('blur', () => this.onBlur(event));
+  }
+
+  onFocus(event) {
+    event.currentTarget.parentNode.classList.add('focus');
+  }
+
+  onBlur(event) {
+    event.currentTarget.parentNode.classList.remove('focus');
+  }
+}
+
+// Initialize switches
+window.addEventListener('load', function () {
+  // Initialize the Switch component on all matching DOM nodes
+  Array.from(
+    document.querySelectorAll('input[type=checkbox][role^=switch]')
+  ).forEach((element) => new CheckboxSwitch(element));
+});
+
+//functionality for hidden textbox
+const usability_testing_checkbox = document.getElementById("usability_testing");
+const hidden_field_paragraph = document.getElementById("hiddenField");
+usability_testing_checkbox.addEventListener("change", () => {
+  if (usability_testing_checkbox.checked) {
+    hidden_field_paragraph.hidden = false;
+  }
+  else{
+    hidden_field_paragraph.hidden = true;
+  }
+});
+
+// functionality from https://www.w3.org/WAI/ARIA/apg/patterns/alert/examples/alert/
+
+/*
+ *   This content is licensed according to the W3C Software License at
+ *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ *
+ */
+
+'use strict';
+
+window.addEventListener('load', function () {
+  console.log("Loaded:", document.getElementById('alert-trigger'));
+  var button = document.getElementById('alert-trigger');
+
+  button.addEventListener('click', addAlert);
+});
+
+/*
+ * @function addAlert
+ *
+ * @desc Adds an alert to the page
+ *
+ * @param   {object}  event  -  Standard W3C event object
+ *
+ */
+
+function addAlert() {
+  var example = document.getElementById('example');
+  var template = document.getElementById('alert-template').innerHTML;
+  example.innerHTML = template;
+}

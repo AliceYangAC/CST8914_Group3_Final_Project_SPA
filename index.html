@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta
+    <meta 
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
@@ -203,21 +203,68 @@
         </p>
       </div>
 
-      <div id="schedule">
+      <section id="schedule">
         <h1 tabindex="-1">Schedule a Call</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-          volutpat vulputate sapien a ultrices. Duis sit amet nibh porta,
-          molestie dolor nec, egestas nibh. Donec eleifend est at dolor
-          pharetra, at fringilla libero pretium. Sed non quam ut ligula egestas
-          efficitur. Vivamus congue massa non tempor scelerisque. Duis sit amet
-          elit iaculis, maximus sapien in, dictum sapien. Mauris id pellentesque
-          nisl. Mauris ullamcorper purus vel aliquam dapibus. Ut a placerat sem.
-          Sed varius, sapien non bibendum molestie, nunc arcu sagittis nisl, sed
-          tempus ex tortor nec erat. Donec hendrerit suscipit ipsum ac
-          porttitor. Nam lacus nisl, maximus a lectus at, ornare tempus eros.
-        </p>
-      </div>
+          <img class="decorative_image" src="images/scheduleacall.png" alt="">
+          <p>
+            At Empower Ability Labs, we are dedicated to cultivating empathy and driving positive change through immersive experiences.  Fill out the form below and we'll get back to you as soon as we can to schedule a call with our sales team! 
+          </p>
+          <form id="schdule_call_form">
+            <div id="user_entries">
+              <label for="business_entry" class="text_label">Business Name:</label>
+              <input id="business_entry" type="text" name="business"/><br>
+              <label for="phone_num_entry" class="text_label">Phone number:</label>
+              <input id="phone_num_entry" type="tel" pattern="\d{10}" name="phone"/><br>
+              <label for="email_entry" class="text_label">Email:</label><span aria-hidden="true">(required)</span>
+              <input id="email_entry" type="email" name="email" aria-required="true" required/><br>
+            </div>
+            <fieldset>
+              <legend>What would you like to talk about? </legend>
+              
+              <p>Select the activities you are interested in:</p>
+              <label>
+                <label for="awareness_lab"></label>
+                <input type="checkbox" name="activities" id="awareness_lab">
+                Awareness lab days and workshops
+              </label>
+
+              <label>
+                <label for="invite_speaker"></label>
+                <input type="checkbox" name="activities" id="invite_speaker">
+                Invite a speaker with disabilities to your event
+              </label>
+
+              <label>
+                <label for="usability_testing"></label>
+                <input type="checkbox" name="activities" id="usability_testing">
+                Usability testing
+              </label>
+                  
+            </fieldset>
+              <div id=hiddenField hidden><label for="Tell us about your event"></label>Tell us about your event<br>
+                <textarea name="Tell us about your event" id="Tell us about your event"></textarea>
+              </div>
+            <label>
+                <input id="id-switch-1" type="checkbox" role="switch">
+                <span class="state">
+                  <img class="on" src="./images/SwitchNo.png" aria-hidden="true">
+                  <img class="off" src="./images/SwitchYes.png" aria-hidden="true">
+                </span>Receive emails about updates and services
+            </label> 
+            <!--Code below from: https://www.w3.org/WAI/ARIA/apg/patterns/alert/examples/alert/-->
+            <button type="button" id="alert-trigger">Schedule a call!</button>
+            <div id="example" role="alert"></div>
+            <script type="text/template" id="alert-template">
+              <p>Your call has been successfully scheduled</p>
+            </script>
+        
+            <!--TO DO
+            > fix issue with text getting selected with switch
+            > wait for the rest of the site's functionality so I can add contitions for whether or not the input is valid.
+            -->
+            </div>
+        </form>
+      </section>
     </main>
 
     <footer class="container">

@@ -61,3 +61,114 @@ button:focus {
   display: none; 
 }
 /* ------------------------------- */
+/*CSS for switch with minor modifications to suit size of image and outline*/
+fieldset {
+  width: 22em;
+  
+}
+/*repurposed for border around checkboxes*/
+fieldset {
+  font-size: 110%;
+  display: inline-block;
+  border: 1px solid black; padding: 10px;
+}
+
+label {
+  display: block;
+  margin: 0.5em;
+  border: 0 solid #005a9c;
+  border-radius: 5px;
+  width: auto;/*works well enough for now, issue with text being inside selection for button*/
+  height: auto;
+}
+
+label .label {
+  display: inline-block;
+  width: 9em;
+  user-select: none;
+}
+
+label input[role="switch"] {
+  opacity: 0;
+}
+
+label input[role="switch"] ~ .state {
+  display: inline-block;
+  user-select: none;
+}
+
+label input[role="switch"] ~ .state > .container {
+  position: relative;
+  top: 2px;
+  display: inline-block;
+  border: 2px solid black;
+  width: 40px;/*not the problem*/
+  height: 10px;/*not the problem*/
+}
+
+label input[role="switch"] ~ .state > .container > .position {
+  position: relative;
+  left: 2px;
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 9px;
+  width: 1em;/*not the problem*/
+  height: 1em;/*not the problem*/
+  background: black;
+  opacity: 0.6;
+}
+
+label input[role="switch"]:not(:checked) ~ .state img.off {
+  display: none;
+}
+
+label input[role="switch"]:checked ~ .state img.on {
+  display: none;
+}
+
+label input[role="switch"]:checked ~ .state > .container > .position {
+  left: 2px;
+  border-color: green;
+  background: green;
+  opacity: 1;
+}
+
+label.focus,
+label:hover {
+  border-width: 2px;
+  outline: none;
+  background-color: #def;
+  cursor: pointer;
+}
+
+label.focus span.container,
+label:hover span.container {
+  background-color: white;
+}
+
+label .state img {
+  height: 1.6em;  
+  width: auto;
+  vertical-align: middle;
+}
+/* ------------------------------- */
+/* From https://www.w3.org/WAI/ARIA/apg/patterns/alert/examples/alert/ */
+[role="alert"] {
+  padding: 10px;
+  border: 2px solid hsl(206deg 74% 54%);
+  border-radius: 4px;
+  background: hsl(206deg 74% 90%);
+}
+
+[role="alert"]:empty {
+  display: none;
+}
+
+/* ------------------------------- */
+.decorative_image {
+  float: right
+}
+
+.text_label {
+  all: unset
+}
