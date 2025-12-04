@@ -163,3 +163,10 @@ label .state img {
 }
 
 /* ------------------------------- */
+.decorative_image {
+  float: right
+}
+
+.text_label {
+  all: unset
+}
