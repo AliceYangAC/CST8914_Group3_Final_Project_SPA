@@ -175,8 +175,35 @@ usability_testing_checkbox.addEventListener("change", () => {
     hidden_field_paragraph.hidden = true;
   }
 });
-//functionality for button
-const schedule_button = document.getElementById("Schedule_A_Call_Button");
-schedule_button.addEventListener("click", () => {
-  alert("Thank you, we will call you within 3 business days");
+
+// functionality from https://www.w3.org/WAI/ARIA/apg/patterns/alert/examples/alert/
+
+/*
+ *   This content is licensed according to the W3C Software License at
+ *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ *
+ */
+
+'use strict';
+
+window.addEventListener('load', function () {
+  console.log("Loaded:", document.getElementById('alert-trigger'));
+  var button = document.getElementById('alert-trigger');
+
+  button.addEventListener('click', addAlert);
 });
+
+/*
+ * @function addAlert
+ *
+ * @desc Adds an alert to the page
+ *
+ * @param   {object}  event  -  Standard W3C event object
+ *
+ */
+
+function addAlert() {
+  var example = document.getElementById('example');
+  var template = document.getElementById('alert-template').innerHTML;
+  example.innerHTML = template;
+}

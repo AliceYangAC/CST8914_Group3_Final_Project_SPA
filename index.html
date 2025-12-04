@@ -206,17 +206,24 @@
                   
               </form>
               </fieldset>
-              <div id=hiddenField hidden><label for="Tell us about your event"></label>Tell us about your event<br><textarea name="Tell us about your event" id="Tell us about your event"></textarea></div>
+              <div id=hiddenField hidden><label for="Tell us about your event"></label>Tell us about your event<br>
+                <textarea name="Tell us about your event" id="Tell us about your event"></textarea>
+              </div>
             <label>
                 <input id="id-switch-1" type="checkbox" role="switch">
                 <span class="state">
                   <img class="on" src="./images/SwitchNo.png" aria-hidden="true">
                   <img class="off" src="./images/SwitchYes.png" aria-hidden="true">
-                </span> Receive emails about updates and services.
+                </span> 
             </label> 
-            <button id="Schedule_A_Call_Button">Schedule a call</button>
+            <!--Code below from: https://www.w3.org/WAI/ARIA/apg/patterns/alert/examples/alert/-->
+            <button type="button" id="alert-trigger">Schedule a call</button>
+            <div id="example" role="alert"></div>
+            <script type="text/template" id="alert-template">
+              <p>Your call has been successfully scheduled</p>
+            </script>
+        
             <!--TO DO
-            > fix visual issue with label
             > fix issue with text getting selected with switch
             > wait for the rest of the site's functionality so I can add contitions for whether or not the input is valid.
             -->

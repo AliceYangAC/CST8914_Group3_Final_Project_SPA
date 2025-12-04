@@ -150,3 +150,16 @@ label .state img {
   vertical-align: middle;
 }
 /* ------------------------------- */
+/* From https://www.w3.org/WAI/ARIA/apg/patterns/alert/examples/alert/ */
+[role="alert"] {
+  padding: 10px;
+  border: 2px solid hsl(206deg 74% 54%);
+  border-radius: 4px;
+  background: hsl(206deg 74% 90%);
+}
+
+[role="alert"]:empty {
+  display: none;
+}
+
+/* ------------------------------- */
