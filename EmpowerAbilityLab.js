@@ -94,34 +94,76 @@ function getRoute() {
 }
 
 // -------------------------------
-// 2. Lightbox/Dialog JS
+// Dialog Box (for lightbox modals and potentially alerts)
 // -------------------------------
 
 let previousActiveElement = null;
 
-function openDialog(dialogId, trigger) {
+// get all keyboard focusable elements within a given element
+function getKeyboardFocusableElements(element) {
+  return [
+    ...element.querySelectorAll(
+      'a[href], button, input, textarea, select, details,[tabindex]:not([tabindex="-1"])',
+    ),
+  ].filter(
+    el => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden'),
+  )
+}
+
+function openDialog(dialogId, element) {
   // save the element that triggered the dialog to return focus later
-  previousActiveElement = trigger;
+  previousActiveElement = element;
 
   // get the dialog and remove the hidden class
   const dialog = document.getElementById(dialogId);
   dialog.classList.remove('hidden');
 
-  // focus the 'Close' button
-  const closeBtn = dialog.querySelector('button');
-  closeBtn.focus();
+  // find all focusable elements within the dialog
+  const focusableElements = getKeyboardFocusableElements(dialog); 
 
-  // disable the Tab key so focus stays on the button.
-  dialog.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeDialog(dialogId);
-    
-    // prevent tab (keep focus on the one button)
-    if (e.key === 'Tab') e.preventDefault(); 
-  });
+  // identify first and last focusable elements
+  const firstElement = focusableElements[0];
+  const lastElement = focusableElements[focusableElements.length - 1];
+
+  // focus the first focusable element
+  firstElement.focus();
+
+  // add event listener for keyboard navigation
+  dialog.onkeydown = function(e) {
+    if (e.key === 'Escape') {
+      closeDialog(dialog);
+    }
+
+    // handle tabbing within the dialog
+    if (e.key === 'Tab') {
+      // SHIFT + TAB (Going Backwards)
+      if (e.shiftKey) {
+        // if on first focusable elem, loop around to last
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } 
+      // TAB (Going Forwards)
+      else {
+        // if on last focusable elem, loop around to first
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    }
+  };
 }
 
-function closeDialog(dialogId) {
-  document.getElementById(dialogId).classList.add('hidden');
+function closeDialog(element) {
+  // made this reusable; maybe for alerts if you also want to use dialogs? @victor & liza
+  const dialog = element.closest('[role="dialog"], [role="alertdialog"]');
+
+  if (dialog) {
+    dialog.classList.add('hidden');
+    dialog.onkeydown = null;
+  }
 
   // restore focus to main page prev element
   if (previousActiveElement) {
