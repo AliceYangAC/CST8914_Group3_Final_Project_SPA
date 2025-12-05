@@ -293,35 +293,56 @@
               </div>
             </div>
           </div>
-          <fieldset>
-            <legend>What would you like to talk about?</legend>
+          <div class="row w-100">
+            <div class="col-md-8 col-lg-6 col-xl-5 pr-0">
+              <fieldset class="form-group w-100">
+                <legend>What would you like to talk about?</legend>
 
-            <p>Select the activities you are interested in:</p>
-            <label>
-              <label for="awareness_lab"></label>
-              <input type="checkbox" name="activities" id="awareness_lab" />
-              Awareness lab days and workshops
-            </label>
+                <p>Select the activities you are interested in:</p>
+                <label>
+                  <label for="awareness_lab"></label>
+                  <input
+                    type="checkbox"
+                    class="form-check-label"
+                    name="activities"
+                    id="awareness_lab"
+                  />
+                  Awareness lab days and workshops
+                </label>
 
-            <label>
-              <label for="invite_speaker"></label>
-              <input type="checkbox" name="activities" id="invite_speaker" />
-              Invite a speaker with disabilities to your event
-            </label>
+                <label>
+                  <label for="invite_speaker"></label>
+                  <input
+                    type="checkbox"
+                    class="form-check-label"
+                    name="activities"
+                    id="invite_speaker"
+                  />
+                  Invite a speaker with disabilities to your event
+                </label>
 
-            <label>
-              <label for="usability_testing"></label>
-              <input type="checkbox" name="activities" id="usability_testing" />
-              Usability testing
-            </label>
-          </fieldset>
-          <div id="hiddenField" hidden>
-            <label for="Tell us about your event"></label>Tell us about your
-            event<br />
-            <textarea
-              name="Tell us about your event"
-              id="Tell us about your event"
-            ></textarea>
+                <label>
+                  <label for="usability_testing"></label>
+                  <input
+                    type="checkbox"
+                    class="form-check-label"
+                    name="activities"
+                    id="usability_testing"
+                  />
+                  Usability testing
+                </label>
+              </fieldset>
+            </div>
+          </div>
+          <div class="row" id="hiddenField" hidden>
+            <div class="col-md-8 col-lg-6 col-xl-5">
+              <label for="tell-about-event">Tell us about your event</label>
+              <textarea
+                name="tell-about-event"
+                id="tell-about-event"
+                class="w-100 form-control"
+              ></textarea>
+            </div>
           </div>
           <label>
             <input id="id-switch-1" type="checkbox" role="switch" />
