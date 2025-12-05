@@ -6,7 +6,7 @@ main {
   flex-grow: 1;
 }
 
-main>div {
+main > div {
   display: none;
 }
 
@@ -22,55 +22,61 @@ button:focus {
   outline: blue solid 2px;
 }
 
+/* add underline to active link */
+.nav-item.active a.nav-link {
+  text-decoration: underline;
+}
+
 /* ------------------------------- */
 /* 2. Lightbox/Dialog CSS */
 /* ------------------------------- */
 
 /* dialog positioning */
-#dialog_layer, #dialog_committee::before {
-  position: fixed; 
+#dialog_layer,
+#dialog_committee::before {
+  position: fixed;
   inset: 0;
 }
 
 /* dialog structure */
 #dialog_layer {
-  display: grid; 
-  place-items: center; 
-  pointer-events: none; 
+  display: grid;
+  place-items: center;
+  pointer-events: none;
   z-index: 1000;
 }
 
 /* dialog box appearance */
 #dialog_committee {
-  background: #fff; 
-  border: 1px solid #000; 
+  background: #fff;
+  border: 1px solid #000;
   padding: 1rem;
   width: min(90%, 500px);
-  pointer-events: auto; 
+  pointer-events: auto;
   position: relative;
 }
 
 /* backdrop dimming */
 #dialog_committee::before {
-  content: ""; 
-  background: #0008; 
+  content: "";
+  background: #0008;
   z-index: -1;
 }
 
-.hidden { 
-  display: none; 
+.hidden {
+  display: none;
 }
 /* ------------------------------- */
 /*CSS for switch with minor modifications to suit size of image and outline*/
 fieldset {
   width: 22em;
-  
 }
 /*repurposed for border around checkboxes*/
 fieldset {
   font-size: 110%;
   display: inline-block;
-  border: 1px solid black; padding: 10px;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 label {
@@ -78,7 +84,7 @@ label {
   margin: 0.5em;
   border: 0 solid #005a9c;
   border-radius: 5px;
-  width: auto;/*works well enough for now, issue with text being inside selection for button*/
+  width: auto; /*works well enough for now, issue with text being inside selection for button*/
   height: auto;
 }
 
@@ -104,8 +110,8 @@ label input[role="switch"] ~ .state > .container {
   top: 2px;
   display: inline-block;
   border: 2px solid black;
-  width: 40px;/*not the problem*/
-  height: 10px;/*not the problem*/
+  width: 40px; /*not the problem*/
+  height: 10px; /*not the problem*/
 }
 
 label input[role="switch"] ~ .state > .container > .position {
@@ -114,8 +120,8 @@ label input[role="switch"] ~ .state > .container > .position {
   display: inline-block;
   border: 2px solid black;
   border-radius: 9px;
-  width: 1em;/*not the problem*/
-  height: 1em;/*not the problem*/
+  width: 1em; /*not the problem*/
+  height: 1em; /*not the problem*/
   background: black;
   opacity: 0.6;
 }
@@ -155,7 +161,7 @@ label:hover span.container {
 }
 
 label .state img {
-  height: 1.6em;  
+  height: 1.6em;
   width: auto;
   vertical-align: middle;
 }
@@ -174,9 +180,10 @@ label .state img {
 
 /* ------------------------------- */
 .decorative_image {
-  float: right
+  float: right;
 }
 
 .text_label {
-  all: unset
+  all: unset;
 }
+
