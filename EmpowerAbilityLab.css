@@ -22,6 +22,14 @@ button:focus {
   outline: blue solid 2px;
 }
 
+.btn.btn-primary {
+  background-color: #006adb;
+}
+
+a {
+  color: #006adb;
+}
+
 /* add underline to active link */
 .nav-item.active a.nav-link {
   text-decoration: underline;
