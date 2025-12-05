@@ -251,7 +251,6 @@ window.addEventListener("load", function () {
  * @param   {object}  event  -  Standard W3C event object
  *
  */
-
 /*Taken from https://www.geeksforgeeks.org/javascript/javascript-program-to-validate-an-email-address/*/
   function valid(email) {
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -263,11 +262,10 @@ function addAlert() {
   var email_value = document.getElementById("email_entry").value;
   var template = document.getElementById("alert-template").innerHTML;
   var template2 = document.getElementById("alert-template2").innerHTML;
-  if (email_value !== "") {
-    if (valid(email_value)) {
-      example.innerHTML = template;
-    } else {
-      example.innerHTML = template2;
-    }
+  if (valid(email_value)) {
+    example.innerHTML = template;
+  } 
+  else {
+    example.innerHTML = template2;
   }
 }
