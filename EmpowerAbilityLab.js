@@ -246,6 +246,13 @@ window.addEventListener('load', function () {
 
 function addAlert() {
   var example = document.getElementById('example');
+  var email_value = document.getElementById('email_entry').value;
   var template = document.getElementById('alert-template').innerHTML;
-  example.innerHTML = template;
+  var template2 = document.getElementById('alert-template2').innerHTML;
+  if(email_value !== ""){
+    example.innerHTML = template;
+  }
+  else{
+    example.innerHTML = template2;
+  }
 }
