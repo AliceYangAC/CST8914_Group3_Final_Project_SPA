@@ -59,7 +59,7 @@ function renderView() {
       document.getElementById(view.id).style.display = "block";
 
       // update the title
-      document.title = `${view.title} – Empower Ability Labs`;
+      document.title = `${view.title} - Empower Ability Labs`;
 
       // set the nav link as active
 
