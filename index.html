@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -242,28 +242,56 @@
         </p>
         <form id="schdule_call_form">
           <div id="user_entries">
-            <label for="business_entry" class="text_label"
-              >Business Name:</label
-            >
-            <input id="business_entry" type="text" name="business" /><br />
-            <label for="phone_num_entry" class="text_label"
-              >Phone number:</label
-            >
-            <input
-              id="phone_num_entry"
-              type="tel"
-              pattern="\d{10}"
-              name="phone"
-            /><br />
-            <label for="email_entry" class="text_label">Email:</label
-            ><span aria-hidden="true">(required)</span>
-            <input
-              id="email_entry"
-              type="email"
-              name="email"
-              aria-required="true"
-              required
-            /><br />
+            <div class="form-group row">
+              <label
+                class="m-0 col-md-4 col-lg-3 col-xl-2 col-form-label"
+                for="business_entry"
+                >Business Name:</label
+              >
+              <div class="col-md-6 col-lg-5 col-xl-4">
+                <input
+                  class="form-control"
+                  id="business_entry"
+                  type="text"
+                  name="business"
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label
+                for="phone_num_entry"
+                class="m-0 col-md-4 col-lg-3 col-xl-2 col-form-label"
+                >Phone number:</label
+              >
+              <div class="col-md-6 col-lg-5 col-xl-4">
+                <input
+                  class="form-control"
+                  id="phone_num_entry"
+                  type="tel"
+                  pattern="\d{10}"
+                  name="phone"
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label
+                for="email_entry"
+                class="m-0 col-md-4 col-lg-3 col-xl-2 col-form-label"
+                >Email:<span aria-hidden="true">(required)</span></label
+              >
+              <div class="col-md-6 col-lg-5 col-xl-4">
+                <input
+                  class="form-control"
+                  id="email_entry"
+                  type="email"
+                  name="email"
+                  aria-required="true"
+                  required
+                />
+              </div>
+            </div>
           </div>
           <fieldset>
             <legend>What would you like to talk about?</legend>
@@ -307,7 +335,9 @@
             >Receive emails about updates and services
           </label>
           <!--Code below from: https://www.w3.org/WAI/ARIA/apg/patterns/alert/examples/alert/-->
-          <button type="button" id="alert-trigger">Schedule a call!</button>
+          <button class="btn btn-primary mb-1" type="button" id="alert-trigger">
+            Schedule a call!
+          </button>
           <div id="example" role="alert"></div>
           <script type="text/template" id="alert-template">
             <p>Call successfully scheduled</p>
@@ -315,7 +345,6 @@
           <script type="text/template" id="alert-template2">
             <p>Unsuccessful. Email required.</p>
           </script>
-
         </form>
       </section>
     </main>

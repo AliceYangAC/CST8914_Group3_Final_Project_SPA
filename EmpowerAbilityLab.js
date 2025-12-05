@@ -1,38 +1,42 @@
 // array of views for the SPA
 const views = [
   {
-    route: '/',
-    id: 'home',
-    title: 'Home'
+    route: "/",
+    id: "home",
+    title: "Home",
   },
   {
-    route: '/services',
-    id: 'services',
-    title: 'Services'
+    route: "/services",
+    id: "services",
+    title: "Services",
   },
   {
-    route: '/schedule',
-    id: 'schedule',
-    title: 'Schedule a Call'
-  }
+    route: "/schedule",
+    id: "schedule",
+    title: "Schedule a Call",
+  },
 ];
 
+let currentView;
+
 // JS that runs when page loads
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // restore path if page was refreshed
-  const fallbackPath = sessionStorage.getItem('spa-fallback-path');
+  const fallbackPath = sessionStorage.getItem("spa-fallback-path");
   if (fallbackPath) {
-    sessionStorage.removeItem('spa-fallback-path');
-    history.replaceState(null, '', fallbackPath);
+    sessionStorage.removeItem("spa-fallback-path");
+    history.replaceState(null, "", fallbackPath);
   }
 
   // loop through nav links adding the click event handler
-  const navLinks = document.getElementsByClassName('nav-link');
+  const navLinks = document.getElementsByClassName("nav-link");
   for (const link of navLinks) {
-    link.addEventListener('click', e => {
+    link.addEventListener("click", (e) => {
       e.preventDefault(); // prevent the links from refreshing the page
-      history.pushState(null, '', link.href); // update the history for the back button
+      history.pushState(null, "", link.href); // update the history for the back button
       renderView();
+      // focus the header
+      document.querySelector(`#${currentView} h1`).focus();
     });
   }
 
@@ -41,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // render the previous view when the user presses the back button
-window.addEventListener('popstate', renderView);
+window.addEventListener("popstate", renderView);
 
 // checks the path to update the title and render the correct view
 function renderView() {
@@ -52,45 +56,50 @@ function renderView() {
   for (const view of views) {
     if (view.route === route) {
       // display the view
-      document.getElementById(view.id).style.display = 'block';
+      document.getElementById(view.id).style.display = "block";
 
       // update the title
       document.title = `${view.title} – Empower Ability Labs`;
 
       // set the nav link as active
 
-      document.querySelector(`.nav-link[href=".${view.route}"]`)
-        .parentElement.classList.add('active');
+      document
+        .querySelector(`.nav-link[href=".${view.route}"]`)
+        .parentElement.classList.add("active");
 
-      // focus the header
-      document.querySelector(`#${view.id} h1`).focus();
+      currentView = view.id;
     } else {
       // hide the view if it isn't the one selected
-      document.getElementById(view.id).style.display = 'none';
+      document.getElementById(view.id).style.display = "none";
 
       // set the nav link as inactive
-      document.querySelector(`.nav-link[href=".${view.route}"]`)
-        .parentElement.classList.remove('active');
+      document
+        .querySelector(`.nav-link[href=".${view.route}"]`)
+        .parentElement.classList.remove("active");
     }
   }
 }
-
 
 // gets the route from the current url
 function getRoute() {
   const path = window.location.pathname;
 
   // extract the SPA root by removing everything after the last /
-  const root = path.replace(/index\.html$/, '').split('/').slice(0, -1).join('/') + '/';
+  const root =
+    path
+      .replace(/index\.html$/, "")
+      .split("/")
+      .slice(0, -1)
+      .join("/") + "/";
 
   // get the relative path
   let relative = path.substring(root.length);
 
   // handle home edge case
-  if (relative === 'index.html' || relative === '') return '/';
+  if (relative === "index.html" || relative === "") return "/";
 
   // prepend slash to become a route
-  return '/' + relative;
+  return "/" + relative;
 }
 
 // -------------------------------
@@ -106,8 +115,8 @@ function getKeyboardFocusableElements(element) {
       'a[href], button, input, textarea, select, details,[tabindex]:not([tabindex="-1"])',
     ),
   ].filter(
-    el => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden'),
-  )
+    (el) => !el.hasAttribute("disabled") && !el.getAttribute("aria-hidden"),
+  );
 }
 
 function openDialog(dialogId, element) {
@@ -116,10 +125,10 @@ function openDialog(dialogId, element) {
 
   // get the dialog and remove the hidden class
   const dialog = document.getElementById(dialogId);
-  dialog.classList.remove('hidden');
+  dialog.classList.remove("hidden");
 
   // find all focusable elements within the dialog
-  const focusableElements = getKeyboardFocusableElements(dialog); 
+  const focusableElements = getKeyboardFocusableElements(dialog);
 
   // identify first and last focusable elements
   const firstElement = focusableElements[0];
@@ -129,13 +138,13 @@ function openDialog(dialogId, element) {
   firstElement.focus();
 
   // add event listener for keyboard navigation
-  dialog.onkeydown = function(e) {
-    if (e.key === 'Escape') {
+  dialog.onkeydown = function (e) {
+    if (e.key === "Escape") {
       closeDialog(dialog);
     }
 
     // handle tabbing within the dialog
-    if (e.key === 'Tab') {
+    if (e.key === "Tab") {
       // SHIFT + TAB (Going Backwards)
       if (e.shiftKey) {
         // if on first focusable elem, loop around to last
@@ -143,7 +152,7 @@ function openDialog(dialogId, element) {
           e.preventDefault();
           lastElement.focus();
         }
-      } 
+      }
       // TAB (Going Forwards)
       else {
         // if on last focusable elem, loop around to first
@@ -161,7 +170,7 @@ function closeDialog(element) {
   const dialog = element.closest('[role="dialog"], [role="alertdialog"]');
 
   if (dialog) {
-    dialog.classList.add('hidden');
+    dialog.classList.add("hidden");
     dialog.onkeydown = null;
   }
 
@@ -180,29 +189,29 @@ function closeDialog(element) {
  *
  *   Desc:  Switch widget using input[type=checkbox] that implements ARIA Authoring Practices
  */
-'use strict';
+("use strict");
 
 class CheckboxSwitch {
   constructor(domNode) {
     this.switchNode = domNode;
-    this.switchNode.addEventListener('focus', () => this.onFocus(event));
-    this.switchNode.addEventListener('blur', () => this.onBlur(event));
+    this.switchNode.addEventListener("focus", () => this.onFocus(event));
+    this.switchNode.addEventListener("blur", () => this.onBlur(event));
   }
 
   onFocus(event) {
-    event.currentTarget.parentNode.classList.add('focus');
+    event.currentTarget.parentNode.classList.add("focus");
   }
 
   onBlur(event) {
-    event.currentTarget.parentNode.classList.remove('focus');
+    event.currentTarget.parentNode.classList.remove("focus");
   }
 }
 
 // Initialize switches
-window.addEventListener('load', function () {
+window.addEventListener("load", function () {
   // Initialize the Switch component on all matching DOM nodes
   Array.from(
-    document.querySelectorAll('input[type=checkbox][role^=switch]')
+    document.querySelectorAll("input[type=checkbox][role^=switch]"),
   ).forEach((element) => new CheckboxSwitch(element));
 });
 
@@ -212,8 +221,7 @@ const hidden_field_paragraph = document.getElementById("hiddenField");
 usability_testing_checkbox.addEventListener("change", () => {
   if (usability_testing_checkbox.checked) {
     hidden_field_paragraph.hidden = false;
-  }
-  else{
+  } else {
     hidden_field_paragraph.hidden = true;
   }
 });
@@ -226,13 +234,13 @@ usability_testing_checkbox.addEventListener("change", () => {
  *
  */
 
-'use strict';
+("use strict");
 
-window.addEventListener('load', function () {
-  console.log("Loaded:", document.getElementById('alert-trigger'));
-  var button = document.getElementById('alert-trigger');
+window.addEventListener("load", function () {
+  console.log("Loaded:", document.getElementById("alert-trigger"));
+  var button = document.getElementById("alert-trigger");
 
-  button.addEventListener('click', addAlert);
+  button.addEventListener("click", addAlert);
 });
 
 /*
@@ -245,14 +253,13 @@ window.addEventListener('load', function () {
  */
 
 function addAlert() {
-  var example = document.getElementById('example');
-  var email_value = document.getElementById('email_entry').value;
-  var template = document.getElementById('alert-template').innerHTML;
-  var template2 = document.getElementById('alert-template2').innerHTML;
-  if(email_value !== ""){
+  var example = document.getElementById("example");
+  var email_value = document.getElementById("email_entry").value;
+  var template = document.getElementById("alert-template").innerHTML;
+  var template2 = document.getElementById("alert-template2").innerHTML;
+  if (email_value !== "") {
     example.innerHTML = template;
-  }
-  else{
+  } else {
     example.innerHTML = template2;
   }
 }
